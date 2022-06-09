@@ -9,6 +9,7 @@ router.register('pickups', PickUpViewSet, basename='pickups')
 
 
 urlpatterns = [
+    
     path('viewset/', include(router.urls)),
     path('viewset/<int:pk>', include(router.urls)),
     # path('suvs/', suv_list),
