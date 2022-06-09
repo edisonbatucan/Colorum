@@ -1,18 +1,17 @@
-from cv2 import imread
+# from django.shortcuts import render, get_object_or_404
+# from django.http import HttpResponse
+# from rest_framework.decorators import api_view
+# from rest_framework.response import Response
+# from rest_framework import status
+# from rest_framework.views import APIView
+# from rest_framework import generics, mixins
+
 from django import views
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .models import SUV, PickUp
-from .serializers import SUVSerializer, PickUpSerializer
-from rest_framework import status
-from rest_framework.views import APIView
-from rest_framework import generics
-from rest_framework import mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
+from .models import SUV, PickUp
+from .serializers import SUVSerializer, PickUpSerializer
 
 
 # Create your views here.
@@ -20,6 +19,7 @@ from rest_framework import viewsets
 class SUVViewSet(viewsets.ModelViewSet):
     serializer_class = SUVSerializer
     queryset = SUV.objects.all()
+
 
 class PickUpViewSet(viewsets.ModelViewSet):
     serializer_class = PickUpSerializer
