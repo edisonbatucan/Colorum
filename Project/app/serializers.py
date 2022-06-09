@@ -12,12 +12,14 @@ class SUVSerializer(serializers.ModelSerializer):
     class Meta:
         model = SUV
         # fields = ['id', 'car_name', 'price', 'num_seats', 'wheel_size']
+        ordering = ['-id']
         fields = '__all__'
 
 class PickUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = PickUp
         #fields = ['id', 'car_name', 'price', 'num_seats', 'wheel_size']
+        ordering = ['-id']
         fields = '__all__'
 
 class RegristrationSerializer(serializers.ModelSerializer):
