@@ -1,45 +1,47 @@
-from cv2 import imread
-from django.shortcuts import render
-from django.http import HttpResponse
-from rest_framework.decorators import api_view
+# from cv2 import imread
+# from django.shortcuts import render
+# from django.http import HttpResponse
+# from rest_framework.decorators import api_view
+# from rest_framework import mixins
+# from rest_framework.views import APIView
+# from rest_framework import serializers
+
 from rest_framework.response import Response
-from .models import SUV, PickUp
-from .serializers import RegristrationSerializer,SUVSerializer, PickUpSerializer
 from rest_framework import status
-from rest_framework.views import APIView
 from rest_framework import generics
-from rest_framework import mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from rest_framework import status
-from rest_framework import serializers
+from .models import SUV, PickUp
+from .serializers import RegistrationSerializer, SUVSerializer, PickUpSerializer
 import uuid
 
 
 # Create your views here.
-class RegristrationAPIView(generics.GenericAPIView):
-    serializer_class = RegristrationSerializer
-    
-    def post(self,request):
-        serializer = self.get_serializer(data = request.data)
+class RegistrationAPIView(generics.GenericAPIView):
+    serializer_class = RegistrationSerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
         #serializer.is_valid(raise_exception = True)
-        #serializer.save()
+        # serializer.save()
         if(serializer.is_valid()):
             serializer.save()
             return Response({
                 "RequestId": str(uuid.uuid4()),
-                "Message": "USer created successfully",
-                "User":serializer.data}, status = status.HTTP_201_CREATED
-                )
-        
-        return Response({"Errors": serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
+                "Message": "User created successfully",
+                "User": serializer.data}, status=status.HTTP_201_CREATED
+            )
+
+        return Response({"Errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class SUVViewSet(viewsets.ModelViewSet):
     serializer_class = SUVSerializer
     queryset = SUV.objects.all()
+
 
 class PickUpViewSet(viewsets.ModelViewSet):
     serializer_class = PickUpSerializer

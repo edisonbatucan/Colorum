@@ -15,6 +15,7 @@ class SUVSerializer(serializers.ModelSerializer):
         ordering = ['-id']
         fields = '__all__'
 
+
 class PickUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = PickUp
@@ -22,22 +23,26 @@ class PickUpSerializer(serializers.ModelSerializer):
         ordering = ['-id']
         fields = '__all__'
 
-class RegristrationSerializer(serializers.ModelSerializer):
 
-    username = serializers.CharField(max_length =60, min_length =5)
-    email = serializers.CharField(max_length =60, min_length =5)
+class RegistrationSerializer(serializers.ModelSerializer):
+
+    username = serializers.CharField(max_length=60, min_length=5)
+    email = serializers.CharField(max_length=60, min_length=5)
     password = serializers.CharField(max_length=150, write_only=True)
+
     class Meta:
         model = User
-        fields = ('username','email','password')
+        fields = ('username', 'email', 'password')
 
     def validate(self, args):
-        email = args.get('email',None)
-        username = args.get('username',None)
+        email = args.get('email', None)
+        username = args.get('username', None)
         if User.objects.filter(email=email).exists():
-            raise serializers.ValidationError({'email': ('Email already exists')})
+            raise serializers.ValidationError(
+                {'email': ('Email already exists')})
         if User.objects.filter(username=username).exists():
-            raise serializers.ValidationError({'username': ('Username already exists')})
+            raise serializers.ValidationError(
+                {'username': ('Username already exists')})
 
         return super().validate(args)
 

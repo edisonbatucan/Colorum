@@ -16,13 +16,13 @@ Including another URLconf
 from tokenize import Token
 from django.contrib import admin
 from django.urls import path, include
-from app.views import RegristrationAPIView
+from app.views import RegistrationAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
-    path('auth/register/',RegristrationAPIView.as_view(), name= 'register'),
-    path('auth/login', TokenObtainPairView.as_view(), name='login'),
-    path('auth/refresh', TokenRefreshView.as_view(), name='refreshtoken'),
+    path('auth/register/', RegistrationAPIView.as_view(), name='register'),
+    path('auth/login/', TokenObtainPairView.as_view(), name='login'),
+    path('auth/refresh/', TokenRefreshView.as_view(), name='refreshtoken'),
 ]
