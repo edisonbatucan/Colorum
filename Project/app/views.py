@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import SUV
-from .serializers import SUVSerializer
+from .models import SUV, PickUp
+from .serializers import SUVSerializer, PickUpSerializer
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import generics
@@ -20,6 +20,9 @@ class SUVViewSet(viewsets.ModelViewSet):
     serializer_class = SUVSerializer
     queryset = SUV.objects.all()
 
+class PickUpViewSet(viewsets.ModelViewSet):
+    serializer_class = PickUpSerializer
+    queryset = PickUp.objects.all()
 
 # class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, mixins.RetrieveModelMixin):
 #     serializer_class = SUVSerializer
