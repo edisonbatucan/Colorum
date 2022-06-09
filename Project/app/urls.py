@@ -5,7 +5,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('suvs', SUVViewSet, basename='suvs')
-router.register('pickups', PickUpViewSet, basename='pickups')
+router.register('pickups', PickUpViewSet, basename='pickups') 
 
 
 urlpatterns = [

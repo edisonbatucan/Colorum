@@ -24,6 +24,7 @@ class PickUpViewSet(viewsets.ModelViewSet):
     serializer_class = PickUpSerializer
     queryset = PickUp.objects.all()
 
+
 # class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, mixins.RetrieveModelMixin):
 #     serializer_class = SUVSerializer
 #     queryset = SUV.objects.all()
