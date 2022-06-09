@@ -1,10 +1,11 @@
 from django.db import router
 from django.urls import path, include
-from .views import SUVViewSet
+from .views import SUVViewSet, PickUpViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('suvs', SUVViewSet, basename='suvs')
+router.register('pickups', PickUpViewSet, basename='pickups') 
 
 
 urlpatterns = [
