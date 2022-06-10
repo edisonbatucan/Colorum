@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'vehicle',
     'vehicle_api',
     'rest_framework',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ]
 }
