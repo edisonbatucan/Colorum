@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Vehicles from './components/Vehicles';
+import VehicleLoadingComponent from './components/VehicleLoading';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	const VehicleLoading = VehicleLoadingComponent(Vehicles);
+	const [appState, setAppState] = useState({
+		loading: false,
+		vehicles: null,
+	});
 
+	useEffect(() => {
+		setAppState({ loading: true });
+		const apiUrl = `http://127.0.0.1:8000/api/`;
+		fetch(apiUrl)
+			.then((data) => data.json())
+			.then((vehicles) => {
+				setAppState({ loading: false, vehicles: vehicles });
+			});
+	}, [setAppState]);
+	return (
+		<div className="App">
+			<h1>Latest Vehicles</h1>
+			<VehicleLoading isLoading={appState.loading} vehicles={appState.vehicles} />
+		</div>
+	);
+}
 export default App;
