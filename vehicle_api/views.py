@@ -3,7 +3,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from .serializers import VehicleSerializer
 from vehicle.models import Vehicle
-from rest_framework.permissions import IsAdminUser, DjangoModelPermissionsOrAnonReadOnly, BasePermission, SAFE_METHODS
+from rest_framework.permissions import IsAdminUser, DjangoModelPermissionsOrAnonReadOnly, BasePermission, SAFE_METHODS, IsAuthenticatedOrReadOnly
 # Create your views here.
 
 class VehicleUserWritePermission(BasePermission):
@@ -19,7 +19,7 @@ class VehicleUserWritePermission(BasePermission):
 
 
 class VehicleList(generics.ListCreateAPIView):
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
 

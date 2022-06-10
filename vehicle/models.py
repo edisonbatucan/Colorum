@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
+# from django.contrib.auth.models import User
 # Create your models here.
 
 class Vehicle(models.Model):
@@ -11,7 +12,7 @@ class Vehicle(models.Model):
         ('pickup','PickUp')
     )
     person = models.ForeignKey(
-        User, on_delete= models.CASCADE)
+        settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
     car_name = models.CharField(max_length=100)
     price = models.IntegerField()
     num_seats = models.IntegerField()
