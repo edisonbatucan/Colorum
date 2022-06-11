@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'vehicle_api',
     'rest_framework',
     'users',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
