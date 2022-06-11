@@ -41,11 +41,7 @@ INSTALLED_APPS = [
     'vehicle',
     'vehicle_api',
     'rest_framework',
-<<<<<<< HEAD
     'users',
-=======
-    'corsheaders',
->>>>>>> cfeec00b6b0276e891dcaa192fa7c22a56a03dfb
 ]
 
 REST_FRAMEWORK = {
@@ -142,7 +138,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-<<<<<<< HEAD
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -186,5 +181,3 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
-=======
->>>>>>> cfeec00b6b0276e891dcaa192fa7c22a56a03dfb
