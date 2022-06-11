@@ -5,4 +5,4 @@ from . import models
 
 @admin.register(models.Vehicle)
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('id', 'car_name', 'price', 'num_seats', 'wheel_size', 'car_type')
+    list_display = ('id', 'car_name', 'price', 'num_seats', 'wheel_size', 'car_type', 'person')
