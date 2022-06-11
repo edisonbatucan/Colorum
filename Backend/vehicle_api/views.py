@@ -19,7 +19,7 @@ class VehicleUserWritePermission(BasePermission):
 
 
 class VehicleList(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly] 
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
 
