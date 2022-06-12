@@ -8,6 +8,7 @@ pip install django-cors-headers
 npm install react-scripts --save
 
 npm i --save material-ui-search-bar
+npm install @material-ui/icons
 
 Info:
 Strict Mode
