@@ -31,10 +31,11 @@ export default function Create() {
 	const { id } = useParams();
 	const initialFormData = Object.freeze({
 		id: '',
-		title: '',
-		slug: '',
-		excerpt: '',
-		content: '',
+		car_name: '',
+		price: '',
+		num_seats: '',
+		wheel_size: '',
+		car_type: '',
 	});
 
 	const [formData, updateFormData] = useState(initialFormData);
@@ -43,10 +44,11 @@ export default function Create() {
 		axiosInstance.get('admin/edit/vehicledetail/' + id).then((res) => {
 			updateFormData({
 				...formData,
-				['title']: res.data.title,
-				['excerpt']: res.data.excerpt,
-				['slug']: res.data.slug,
-				['content']: res.data.content,
+				['car_name']: res.data.car_name,
+				['price']: res.data.price,
+				['num_seats']: res.data.num_seats,
+				['wheel_size']: res.data.wheel_size,
+				['car_type']: res.data.car_type
 			});
 			console.log(res.data);
 		});
@@ -65,11 +67,12 @@ export default function Create() {
 		console.log(formData);
 
 		axiosInstance.put(`admin/edit/` + id + '/', {
-			title: formData.title,
-			slug: formData.slug,
-			author: 1,
-			excerpt: formData.excerpt,
-			content: formData.content,
+			car_name: formData.car_name,
+			price: formData.price,
+			person: 2,
+			num_seats: formData.num_seats,
+			wheel_size: formData.wheel_size,
+			car_type: formData.car_type,
 		});
 		history.push({
 			pathname: '/admin/',
@@ -93,11 +96,11 @@ export default function Create() {
 								variant="outlined"
 								required
 								fullWidth
-								id="title"
-								label="Vehicle Title"
-								name="title"
-								autoComplete="title"
-								value={formData.title}
+								id="car_name"
+								label="Car Name"
+								name="car_name"
+								autoComplete="car_name"
+								value={formData.car_name}
 								onChange={handleChange}
 							/>
 						</Grid>
@@ -106,26 +109,12 @@ export default function Create() {
 								variant="outlined"
 								required
 								fullWidth
-								id="excerpt"
-								label="Vehicle Excerpt"
-								name="excerpt"
-								autoComplete="excerpt"
-								value={formData.excerpt}
-								onChange={handleChange}
-								multiline
-								rows={8}
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="slug"
-								label="slug"
-								name="slug"
-								autoComplete="slug"
-								value={formData.slug}
+								id="price"
+								label="Price"
+								name="price"
+								autoComplete="price"
+								value={formData.price}
+								keyboardType='numeric'
 								onChange={handleChange}
 							/>
 						</Grid>
@@ -134,14 +123,38 @@ export default function Create() {
 								variant="outlined"
 								required
 								fullWidth
-								id="content"
-								label="content"
-								name="content"
-								autoComplete="content"
-								value={formData.content}
+								id="num_seats"
+								label="Number of Seats"
+								name="num_seats"
+								autoComplete="num_seats"
+								value={formData.num_seats}
 								onChange={handleChange}
-								multiline
-								rows={8}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								id="wheel_size"
+								label="Wheel Size"
+								name="wheel_size"
+								autoComplete="wheel_size"
+								value={formData.wheel_size}
+								onChange={handleChange}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								id="car_type"
+								label="Car Type"
+								name="car_type"
+								autoComplete="car_type"
+								value={formData.car_type}
+								onChange={handleChange}
 							/>
 						</Grid>
 					</Grid>

@@ -62,21 +62,21 @@ class VehicleSearch(generics.ListAPIView):
 # Vehicle Admin
 
 class CreateVehicle(generics.CreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
 
 class AdminVehicleDetail(generics.RetrieveAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
 
 class EditVehicle(generics.UpdateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     serializer_class = VehicleSerializer
     queryset = Vehicle.objects.all()
 
 class DeleteVehicle(generics.RetrieveDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     serializer_class = VehicleSerializer
     queryset = Vehicle.objects.all()

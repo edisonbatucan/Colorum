@@ -52,22 +52,19 @@ const Vehicles = (props) => {
 						<Table stickyHeader aria-label="sticky table">
 							<TableHead>
 								<TableRow>
-									<TableCell>Id</TableCell>
-									<TableCell align="left">Car Type</TableCell>
-									<TableCell align="left">Car Name</TableCell>
-									<TableCell align="left">Action</TableCell>
+									<TableCell align="center"><strong>Car Name</strong></TableCell>
+									<TableCell align="center"><strong>Price</strong></TableCell>
+									<TableCell align="center"><strong>No. of seats</strong></TableCell>
+									<TableCell align="center"><strong>Wheel Size</strong></TableCell>
+									<TableCell align="center"><strong>Car Type</strong></TableCell>
+									<TableCell align="Center"><strong>Action</strong></TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody>
 								{vehicles.map((vehicle) => {
 									return (
 										<TableRow>
-											<TableCell component="th" scope="row">
-												{vehicle.id}
-											</TableCell>
-											<TableCell align="left">{vehicle.car_type}</TableCell>
-
-											<TableCell align="left">
+											<TableCell align="center">
 												<Link
 													color="textPrimary"
 													href={'/vehicle/' + vehicle.id}
@@ -76,8 +73,11 @@ const Vehicles = (props) => {
 													{vehicle.car_name}
 												</Link>
 											</TableCell>
-
-											<TableCell align="left">
+											<TableCell align="center">₱ {vehicle.price}</TableCell>
+											<TableCell align="center">{vehicle.num_seats}</TableCell>
+											<TableCell align="center">{vehicle.wheel_size}</TableCell>
+											<TableCell align="center">{vehicle.car_type}</TableCell>
+											<TableCell align="center">
 												<Link
 													color="textPrimary"
 													href={'/admin/edit/' + vehicle.id}
@@ -97,7 +97,7 @@ const Vehicles = (props) => {
 									);
 								})}
 								<TableRow>
-									<TableCell colSpan={4} align="right">
+									<TableCell colSpan={6} align="right">
 										<Button
 											href={'/admin/create'}
 											variant="contained"
