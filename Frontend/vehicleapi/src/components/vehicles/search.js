@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axiosInstance from '../axios';
+import axiosInstance from '../../axios';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -65,7 +65,7 @@ const Search = () => {
 								<Card className={classes.card}>
 									<Link
 										color="textPrimary"
-										href={'/vehicle/' + vehicle.car_type}
+										href={'/vehicle/' + vehicle.id}
 										className={classes.link}
 									>
 										<CardMedia

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './App.css'
-import Vehicle from './components/Vehicle';
-import VehicleLoadingComponent from './components/VehicleLoading';
+import Vehicle from './components/vehicles/Vehicle';
+import VehicleLoadingComponent from './components/vehicles/VehicleLoading';
 import axiosInstance from './axios';
 
 function App() {
