@@ -45,12 +45,36 @@ export default function Vehicle() {
 						{data.vehicle.car_name}
 					</Typography>
 					<Typography
-						variant="h5"
+						variant="h4"
 						align="center"
 						color="textSecondary"
 						paragraph
 					>
-						{data.vehicle.car_type}
+					<strong>Price:</strong> ₱ {data.vehicle.price}
+					</Typography>
+					<Typography
+						variant="h4"
+						align="center"
+						color="textSecondary"
+						paragraph
+					>
+					<strong>Number of Seats:</strong> {data.vehicle.num_seats}
+					</Typography>
+					<Typography
+						variant="h4"
+						align="center"
+						color="textSecondary"
+						paragraph
+					>
+					<strong>Wheel Size:</strong> {data.vehicle.wheel_size}
+					</Typography>
+					<Typography
+						variant="h4"
+						align="center"
+						color="textSecondary"
+						paragraph
+					>
+					<strong >{data.vehicle.car_type}</strong>
 					</Typography>
 				</Container>
 			</div>

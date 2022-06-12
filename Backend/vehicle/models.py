@@ -9,7 +9,7 @@ class Vehicle(models.Model):
         ('suv','SUV'),
         ('sports car','Sports Car'),
         ('van','Van'),
-        ('pickup','PickUp')
+        ('pickup','PickUp'),
     )
     person = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
