@@ -97,7 +97,7 @@ export default function Create() {
 								required
 								fullWidth
 								id="car_name"
-								label="Car Name"
+								label="Vehicle Name (String)"
 								name="car_name"
 								autoComplete="car_name"
 								value={formData.car_name}
@@ -110,12 +110,16 @@ export default function Create() {
 								required
 								fullWidth
 								id="price"
-								label="Price"
+								label="Price (Integer)"
 								name="price"
 								autoComplete="price"
 								value={formData.price}
-								keyboardType='numeric'
-								onChange={handleChange}
+								type={"number"}
+								onChange={(event) =>
+									event.target.value < 0
+										? (event.target.value = 0)
+										: event.target.value
+								}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -124,11 +128,16 @@ export default function Create() {
 								required
 								fullWidth
 								id="num_seats"
-								label="Number of Seats"
+								label="Number of Seats (Integer)"
 								name="num_seats"
 								autoComplete="num_seats"
 								value={formData.num_seats}
-								onChange={handleChange}
+								type={"number"}
+								onChange={(event) =>
+									event.target.value < 0
+										? (event.target.value = 0)
+										: event.target.value
+								}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -137,7 +146,7 @@ export default function Create() {
 								required
 								fullWidth
 								id="wheel_size"
-								label="Wheel Size"
+								label="Wheel Size (String: Ex: '18 in - 20 in')"
 								name="wheel_size"
 								autoComplete="wheel_size"
 								value={formData.wheel_size}
@@ -150,7 +159,7 @@ export default function Create() {
 								required
 								fullWidth
 								id="car_type"
-								label="Car Type"
+								label="Car Type (suv, pickup, van, sports car)"
 								name="car_type"
 								autoComplete="car_type"
 								value={formData.car_type}

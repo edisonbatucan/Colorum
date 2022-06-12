@@ -32,28 +32,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Create() {
-	function slugify(string) {
-		const a =
-			'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
-		const b =
-			'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------';
-		const p = new RegExp(a.split('').join('|'), 'g');
-
-		return string
-			.toString()
-			.toLowerCase()
-			.replace(/\s+/g, '-') // Replace spaces with -
-			.replace(p, (c) => b.charAt(a.indexOf(c))) // Replace special characters
-			.replace(/&/g, '-and-') // Replace & with 'and'
-			.replace(/[^\w\-]+/g, '') // Remove all non-word characters
-			.replace(/\-\-+/g, '-') // Replace multiple - with single -
-			.replace(/^-+/, '') // Trim - from start of text
-			.replace(/-+$/, ''); // Trim - from end of text
-	}
-
+	
 	const history = useHistory();
 	const initialFormData = Object.freeze({
 		car_name: '',
+		price: '',
+		num_seats: '',
 		wheel_size: '',
 		car_type: '',
 	});
@@ -61,29 +45,22 @@ export default function Create() {
 	const [formData, updateFormData] = useState(initialFormData);
 
 	const handleChange = (e) => {
-		if ([e.target.name] == 'title') {
-			updateFormData({
-				...formData,
-				// Trimming any whitespace
-				[e.target.name]: e.target.value.trim(),
-				['slug']: slugify(e.target.value.trim()),
-			});
-		} else {
-			updateFormData({
-				...formData,
-				// Trimming any whitespace
-				[e.target.name]: e.target.value.trim(),
-			});
-		}
+		updateFormData({
+			...formData,
+			// Trimming any whitespace
+			[e.target.name]: e.target.value.trim(),
+		});
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axiosInstance
-			.vehicle(`admin/create/`, {
-				car_name: formData.car_name,
-				wheel_size: formData.wheel_size,
+			.post(`admin/create/`, {
 				person: 2,
+				car_name: formData.car_name,
+				price: formData.price,
+				num_seats: formData.num_seats,
+				wheel_size: formData.wheel_size,
 				car_type: formData.car_type,
 			})
 			.then((res) => {
@@ -108,10 +85,10 @@ export default function Create() {
 								variant="outlined"
 								required
 								fullWidth
-								id="title"
-								label="Vehicle Title"
-								name="title"
-								autoComplete="title"
+								id="car_name"
+								label="Vehicle Name (String)"
+								name="car_name"
+								autoComplete="car_name"
 								onChange={handleChange}
 							/>
 						</Grid>
@@ -120,13 +97,16 @@ export default function Create() {
 								variant="outlined"
 								required
 								fullWidth
-								id="excerpt"
-								label="Vehicle Excerpt"
-								name="excerpt"
-								autoComplete="excerpt"
-								onChange={handleChange}
-								multiline
-								rows={4}
+								id="price"
+								label="Price (Integer)"
+								name="price"
+								autoComplete="price"
+								type={"number"}
+								onChange={(event) =>
+									event.target.value < 0
+										? (event.target.value = 0)
+										: event.target.value
+								}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -134,11 +114,28 @@ export default function Create() {
 								variant="outlined"
 								required
 								fullWidth
-								id="slug"
-								label="slug"
-								name="slug"
-								autoComplete="slug"
-								value={formData.slug}
+								id="num_seats"
+								label="Number of Seats (Integer)"
+								name="num_seats"
+								autoComplete="num_seats"
+								// onChange={handleChange}
+								type={"number"}
+								onChange={(event) =>
+									event.target.value < 0
+										? (event.target.value = 0)
+										: event.target.value
+								}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								id="wheel_size"
+								label="Wheel Size (String: Ex: '18 in - 20 in')"
+								name="wheel_size"
+								autoComplete="wheel_size"
 								onChange={handleChange}
 							/>
 						</Grid>
@@ -147,13 +144,11 @@ export default function Create() {
 								variant="outlined"
 								required
 								fullWidth
-								id="content"
-								label="content"
-								name="content"
-								autoComplete="content"
+								id="car_type"
+								label="Car Type (suv, pickup, van, sports car)"
+								name="car_type"
+								autoComplete="car_type"
 								onChange={handleChange}
-								multiline
-								rows={4}
 							/>
 						</Grid>
 					</Grid>

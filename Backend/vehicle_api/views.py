@@ -45,14 +45,14 @@ class VehicleListDetailfilter(generics.ListAPIView):
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['^car_type']
+    search_fields = ['^car_type', '^car_name']
 
 class VehicleSearch(generics.ListAPIView):
     permission_classes = [AllowAny]
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['^car_type']
+    search_fields = ['^car_type', '^car_name']
 
     # '^' Starts-with search.
     # '=' Exact matches.
