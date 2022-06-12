@@ -23,8 +23,8 @@ function Copyright() {
 	return (
 		<Typography variant="body2" color="textSecondary" align="center">
 			{'Copyright © '}
-			<Link color="inherit" href="http://localhost:3000/">
-				Colorum
+			<Link color="inherit" href="http://localhost:3000/admin">
+				Colorum/admin
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}

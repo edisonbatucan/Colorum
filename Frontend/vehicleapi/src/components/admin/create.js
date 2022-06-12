@@ -102,11 +102,7 @@ export default function Create() {
 								name="price"
 								autoComplete="price"
 								type={"number"}
-								onChange={(event) =>
-									event.target.value < 0
-										? (event.target.value = 0)
-										: event.target.value
-								}
+								onChange={handleChange}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -118,13 +114,8 @@ export default function Create() {
 								label="Number of Seats (Integer)"
 								name="num_seats"
 								autoComplete="num_seats"
-								// onChange={handleChange}
 								type={"number"}
-								onChange={(event) =>
-									event.target.value < 0
-										? (event.target.value = 0)
-										: event.target.value
-								}
+								onChange={handleChange}
 							/>
 						</Grid>
 						<Grid item xs={12}>

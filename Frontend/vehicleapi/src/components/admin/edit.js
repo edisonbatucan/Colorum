@@ -115,11 +115,7 @@ export default function Create() {
 								autoComplete="price"
 								value={formData.price}
 								type={"number"}
-								onChange={(event) =>
-									event.target.value < 0
-										? (event.target.value = 0)
-										: event.target.value
-								}
+								onChange={handleChange}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -133,11 +129,7 @@ export default function Create() {
 								autoComplete="num_seats"
 								value={formData.num_seats}
 								type={"number"}
-								onChange={(event) =>
-									event.target.value < 0
-										? (event.target.value = 0)
-										: event.target.value
-								}
+								onChange={handleChange}
 							/>
 						</Grid>
 						<Grid item xs={12}>
